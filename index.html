@@ -3,202 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TireDash NYC | Command Center</title>
+    <title>TIREDASH | PRO AI TECH HUB v5.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
-        body { 
-            font-family: 'Inter', sans-serif; 
-            -webkit-tap-highlight-color: transparent; 
-            overscroll-behavior-y: none;
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;700&family=Inter:wght@400;900&display=swap');
+        
+        :root {
+            --pink: #FF007F; --blue: #00F2FF; --purple: #BC13FE;
+            --orange: #FFAC1C; --green: #39FF14; --yellow: #FFF01F; --red: #FF3131;
         }
-        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+
+        body { 
+            background-color: #010103; color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
+        }
+
+        .header-font { font-family: 'Orbitron', sans-serif; }
+
+        /* 90s NYC Neon Flicker & Bloom */
+        @keyframes neon-flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: brightness(1); }
+            20%, 24%, 55% { opacity: 0.8; filter: brightness(1.2); }
+        }
+        .neon-flicker { animation: neon-flicker 5s infinite linear; }
+
+        .film-strip {
+            background-image: linear-gradient(90deg, #fff 50%, transparent 50%);
+            background-size: 24px 12px; height: 12px; width: 100%; opacity: 0.8;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .glow-pink { color: var(--pink); text-shadow: 0 0 10px var(--pink), 0 0 20px rgba(255,0,127,0.4); }
+        .glow-blue { color: var(--blue); text-shadow: 0 0 10px var(--blue); }
+        .glow-orange { color: var(--orange); text-shadow: 0 0 10px var(--orange); }
+        .glow-green { color: var(--green); text-shadow: 0 0 10px var(--green); }
+        .glow-red { color: var(--red); text-shadow: 0 0 12px var(--red), 0 0 25px rgba(255,49,49,0.5); }
+        .glow-yellow { color: var(--yellow); text-shadow: 0 0 10px var(--yellow); }
+
+        .border-pink { border: 2px solid var(--pink); box-shadow: 0 0 15px rgba(255,0,127,0.3); }
+        .border-blue { border: 2px solid var(--blue); box-shadow: 0 0 15px rgba(0,242,255,0.3); }
+        .border-red { border: 3px solid var(--red); box-shadow: 0 0 25px rgba(255,49,49,0.4); }
+        .border-green { border: 2px solid var(--green); box-shadow: 0 0 15px rgba(57,255,20,0.3); }
+        .border-orange { border: 2px solid var(--orange); box-shadow: 0 0 15px rgba(255,172,28,0.3); }
+
+        .module-card { background: rgba(5, 5, 10, 0.95); border-radius: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .module-card:hover { transform: translateY(-4px) scale(1.01); background: #080810; }
+
+        .crt-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+            background-size: 100% 3px, 3px 100%; pointer-events: none; z-index: 9999; opacity: 0.3;
+        }
+
+        .price-list-container::-webkit-scrollbar { width: 4px; }
+        .price-list-container::-webkit-scrollbar-thumb { background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+
+        .tech-input {
+            background: #000; border: 1px solid rgba(255,255,255,0.1); color: #fff;
+            padding: 12px; font-family: 'Space Grotesk'; font-weight: 700; width: 100%; outline: none;
+        }
+        .tech-input:focus { border-color: var(--blue); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
+
+        .btn-pro { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 0.1em; transition: all 0.2s; text-transform: uppercase; }
+        
+        .price-item {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem;
+        }
+
+        .system-modal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98);
+            z-index: 10000; backdrop-filter: blur(20px); align-items: center; justify-content: center;
+        }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-900">
-    <div class="min-h-screen flex flex-col md:flex-row">
-        
-        <!-- Sidebar (Desktop) -->
-        <aside class="hidden md:flex flex-col w-72 bg-[#0F172A] text-white p-8 h-screen sticky top-0 shadow-2xl">
-            <div class="flex items-center space-x-3 mb-12">
-                <div class="bg-[#EA580C] p-2 rounded-xl shadow-lg shadow-orange-900/40">
-                    <i data-lucide="truck" class="text-white" stroke-width="3"></i>
-                </div>
-                <span class="text-2xl font-black italic tracking-tighter uppercase leading-none">
-                    TIREDASH <span class="text-[#EA580C] NOT-italic">NYC</span>
-                </span>
-            </div>
-            
-            <nav class="flex-1 space-y-2">
-                <div class="flex items-center space-x-3 p-4 bg-[#EA580C] rounded-2xl font-bold shadow-xl shadow-orange-600/20 cursor-pointer">
-                    <i data-lucide="navigation" size="20"></i>
-                    <span>Dispatch Board</span>
-                </div>
-                <div class="flex items-center space-x-3 p-4 text-slate-400 font-bold hover:text-white transition-colors cursor-pointer">
-                    <i data-lucide="users" size="20"></i>
-                    <span>Fleet Drivers</span>
-                </div>
-                <div class="flex items-center space-x-3 p-4 text-slate-400 font-bold hover:text-white transition-colors cursor-pointer">
-                    <i data-lucide="bar-chart-3" size="20"></i>
-                    <span>Analytics</span>
-                </div>
-                <div class="flex items-center space-x-3 p-4 text-slate-400 font-bold hover:text-white transition-colors cursor-pointer">
-                    <i data-lucide="settings" size="20"></i>
-                    <span>Settings</span>
-                </div>
-            </nav>
+<body class="p-4 md:p-8">
+    <div class="crt-overlay"></div>
 
-            <div class="mt-auto pt-6 border-t border-slate-800">
-                <div class="flex items-center space-x-3 text-sm text-slate-400 font-medium">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full status-pulse"></div>
-                    <span>System Encrypted</span>
-                </div>
+    <!-- PAYMENT GATEWAY MODAL -->
+    <div id="pay-modal" class="system-modal p-4">
+        <div class="max-w-md w-full border-2 border-blue bg-black p-8 relative shadow-[0_0_100px_rgba(0,242,255,0.2)]">
+            <button onclick="closePay()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
+            <div class="text-center mb-10">
+                <i data-lucide="zap" class="glow-blue mx-auto mb-4" size="48"></i>
+                <h3 class="header-font font-black text-2xl glow-blue italic">SECURE GATEWAY</h3>
+                <p id="pay-service" class="text-[10px] font-black tracking-[0.4em] text-white/40 mt-2 uppercase">AI DISPATCH AUTH</p>
+                <p id="pay-amt" class="text-6xl font-black mt-6 glow-green">$60</p>
             </div>
-        </aside>
-
-        <!-- Mobile View Header -->
-        <div class="md:hidden bg-white/90 backdrop-blur-md p-5 border-b border-slate-200 sticky top-0 z-[100] flex justify-between items-center shadow-sm">
-            <div class="flex items-center space-x-2">
-                <i data-lucide="truck" class="text-[#EA580C]" stroke-width="3"></i>
-                <span class="text-2xl font-black italic tracking-tighter uppercase">TIREDASH <span class="text-[#EA580C] NOT-italic">NYC</span></span>
-            </div>
-            <div class="bg-slate-100 p-2 rounded-lg">
-                <i data-lucide="menu" class="text-slate-900" size="24"></i>
+            <div class="space-y-4">
+                <a id="cashapp-btn" href="#" target="_blank" class="flex items-center justify-between border-2 border-[#39FF14] p-6 hover:bg-[#39FF14]/10 transition-all">
+                    <span class="header-font glow-green">CASH APP</span><i data-lucide="dollar-sign" class="glow-green"></i>
+                </a>
+                <a id="paypal-btn" href="#" target="_blank" class="flex items-center justify-between border-2 border-[#00F2FF] p-6 hover:bg-[#00F2FF]/10 transition-all">
+                    <span class="header-font glow-blue">PAYPAL PRO</span><i data-lucide="credit-card" class="glow-blue"></i>
+                </a>
             </div>
         </div>
-
-        <!-- Main Workspace -->
-        <main class="flex-1 p-5 md:p-12 max-w-7xl mx-auto w-full pb-24 md:pb-12">
-            
-            <!-- Header Section -->
-            <header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
-                <div>
-                    <div class="inline-flex items-center space-x-2 bg-orange-50 text-[#EA580C] px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-3 border border-orange-100">
-                        <span class="w-1.5 h-1.5 bg-[#EA580C] rounded-full status-pulse"></span>
-                        <span>Live Dispatch Active</span>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-none">Fleet Control</h1>
-                    <p class="text-slate-500 font-semibold mt-2 text-lg">Managing roadside response across all 5 boroughs.</p>
-                </div>
-                <button class="w-full md:w-auto bg-[#0F172A] text-white px-8 py-5 rounded-[2rem] font-black shadow-2xl shadow-slate-300 active:scale-95 transition-all flex items-center justify-center space-x-3">
-                    <i data-lucide="plus-circle" size="22" stroke-width="3"></i>
-                    <span class="uppercase tracking-tight">New Dispatch Call</span>
-                </button>
-            </header>
-
-            <!-- KPI Dashboard -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm hover:shadow-md transition-shadow">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Active Calls</p>
-                    <div class="flex items-baseline space-x-2">
-                        <p class="text-4xl font-black text-slate-900">09</p>
-                        <span class="text-emerald-500 text-xs font-bold">+2</span>
-                    </div>
-                </div>
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm border-l-4 border-l-[#EA580C]">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Avg Response</p>
-                    <p class="text-4xl font-black text-slate-900">19m</p>
-                </div>
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Idle Trucks</p>
-                    <p class="text-4xl font-black text-slate-900">04</p>
-                </div>
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Today Revenue</p>
-                    <p class="text-4xl font-black text-emerald-600">$4.8k</p>
-                </div>
-            </div>
-
-            <!-- Active Jobs Section -->
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-black text-slate-900 tracking-tight">Active Dispatches</h2>
-                <div class="flex items-center text-sm font-bold text-slate-400 cursor-pointer hover:text-slate-600">
-                    <span>View All</span>
-                    <i data-lucide="chevron-right" size="16" class="ml-1"></i>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Dispatch Card 1 -->
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group cursor-pointer hover:border-orange-200 hover:shadow-lg transition-all">
-                    <div class="flex items-start space-x-5">
-                        <div class="bg-orange-50 p-5 rounded-[2rem] text-[#EA580C] group-hover:scale-110 transition-transform">
-                            <i data-lucide="wrench" size="28"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <h3 class="font-black text-xl text-slate-900">Global Logistics Corp</h3>
-                                <span class="bg-blue-100 text-blue-700 text-[9px] font-black px-2 py-0.5 rounded uppercase">Fleet</span>
-                            </div>
-                            <div class="flex flex-wrap items-center text-sm font-bold text-slate-400 space-x-4 mt-2">
-                                <span class="flex items-center text-[#EA580C]"><i data-lucide="map-pin" size="14" class="mr-1.5"></i>Midtown, NY</span>
-                                <span class="flex items-center"><i data-lucide="clock" size="14" class="mr-1.5"></i>12m elapsed</span>
-                                <span class="flex items-center"><i data-lucide="circle-dot" size="14" class="mr-1.5 text-blue-500"></i>Flat Tire Change</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-auto mt-6 md:mt-0 flex justify-between md:flex-col items-center md:items-end gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
-                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-[10px] font-black uppercase tracking-tighter">En Route</span>
-                        <div class="text-right">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Driver</p>
-                            <p class="text-sm font-black text-slate-900">Mike Sanderson</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dispatch Card 2 -->
-                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group cursor-pointer hover:border-orange-200 hover:shadow-lg transition-all">
-                    <div class="flex items-start space-x-5">
-                        <div class="bg-emerald-50 p-5 rounded-[2rem] text-emerald-600 group-hover:scale-110 transition-transform">
-                            <i data-lucide="shield-check" size="28"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <h3 class="font-black text-xl text-slate-900">Amazon Delivery Van</h3>
-                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-black px-2 py-0.5 rounded uppercase">Priority</span>
-                            </div>
-                            <div class="flex flex-wrap items-center text-sm font-bold text-slate-400 space-x-4 mt-2">
-                                <span class="flex items-center text-[#EA580C]"><i data-lucide="map-pin" size="14" class="mr-1.5"></i>Bronx, NY</span>
-                                <span class="flex items-center"><i data-lucide="clock" size="14" class="mr-1.5"></i>5m elapsed</span>
-                                <span class="flex items-center"><i data-lucide="circle-dot" size="14" class="mr-1.5 text-emerald-500"></i>Full Replacement</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-auto mt-6 md:mt-0 flex justify-between md:flex-col items-center md:items-end gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
-                        <span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-black uppercase tracking-tighter">On-Site</span>
-                        <div class="text-right">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Driver</p>
-                            <p class="text-sm font-black text-slate-900">Steve Ross</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
 
-    <!-- Mobile Navigation (Bottom) -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-slate-200 px-8 py-4 flex justify-between items-center z-[100] shadow-2xl">
-        <i data-lucide="navigation" class="text-[#EA580C]" size="24" stroke-width="3"></i>
-        <i data-lucide="users" class="text-slate-400" size="24"></i>
-        <div class="bg-[#EA580C] p-4 rounded-full -mt-12 border-4 border-white shadow-xl">
-            <i data-lucide="plus" class="text-white" size="24" stroke-width="3"></i>
+    <!-- TIRE GUIDE HUD -->
+    <div id="guide-modal" class="system-modal p-4">
+        <div class="max-w-xl w-full border-2 border-[#BC13FE] bg-black p-8 relative shadow-[0_0_80px_rgba(188,19,254,0.2)]">
+            <button onclick="closeGuide()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
+            <div class="text-center mb-8">
+                <h3 class="header-font font-black text-2xl glow-pink">SIDEWALL DECODER</h3>
+                <p class="text-[10px] font-black text-white/40 tracking-widest mt-2 uppercase">Neural-Link Reference Guide</p>
+            </div>
+            <div class="border-2 border-white/5 p-6 rounded mb-6 text-center">
+                <p class="text-3xl font-black tracking-widest mb-4">
+                    <span class="glow-pink">295</span> / <span class="glow-orange">75</span> R <span class="glow-green">22.5</span>
+                </p>
+                <div class="grid grid-cols-3 gap-2 text-[9px] font-black uppercase text-white/60">
+                    <div>WIDTH (MM)</div><div>HEIGHT (%)</div><div>RIM (IN)</div>
+                </div>
+            </div>
+            <button onclick="closeGuide()" class="w-full bg-[#BC13FE] text-white py-5 btn-pro text-sm">BACK TO TERMINAL</button>
         </div>
-        <i data-lucide="bar-chart-3" class="text-slate-400" size="24"></i>
-        <i data-lucide="settings" class="text-slate-400" size="24"></i>
+    </div>
+
+    <!-- TOP SYSTEM BAR -->
+    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] mb-6 px-2 max-w-[1700px] mx-auto neon-flicker">
+        <div class="text-[#FFF01F] flex items-center">
+            <i data-lucide="cpu" size="14" class="mr-2"></i>
+            42ND ST TERMINAL // MASTER DB v5.3 // NYC
+        </div>
+        <div class="flex items-center space-x-6">
+            <span class="glow-red animate-pulse">● SYSTEM_STATUS: AUTOMATED</span>
+            <a href="tel:5164615856" class="glow-blue flex items-center bg-white/5 border border-[#00F2FF]/30 px-4 py-2 hover:bg-white/10">
+                <i data-lucide="phone-call" size="12" class="mr-2"></i> 516.461.5856
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN INTERFACE -->
+    <div class="max-w-[1700px] mx-auto">
+        <div class="film-strip mb-8"></div>
+        <header class="text-center mb-8 relative">
+            <h1 class="text-7xl md:text-[11rem] font-black italic tracking-tighter glow-pink header-font leading-[0.75] uppercase neon-flicker mb-6">TIREDASH</h1>
+            <p class="text-[14px] font-black tracking-[0.7em] uppercase glow-blue">ROAD-LOGISTICS AUTOMATION • NYC HUB</p>
+        </header>
+        <div class="film-strip mb-12"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+            
+            <!-- COL 1: MASTER PRICE BOARD (150+ SIZES) -->
+            <div class="lg:col-span-3">
+                <div class="flex justify-between items-center mb-6 px-2">
+                    <h2 class="glow-pink font-black text-2xl uppercase tracking-tighter">AI BOARD</h2>
+                    <span class="text-[10px] font-black bg-pink-600 text-black px-4 py-1 neon-flicker">FULL 150 LIST</span>
+                </div>
+                <div class="module-card border-pink p-6">
+                    <div class="flex justify-between text-[11px] font-black text-white/30 uppercase mb-4 px-2 border-b border-white/10 pb-3">
+                        <span>SPEC / SIZE</span><span>NET $</span>
+                    </div>
+                    <div id="master-board" class="price-list-container h-[800px] overflow-y-auto px-1 pr-4">
+                        <!-- Content Generated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- COL 2: AI LOGISTICS -->
+            <div class="lg:col-span-3 space-y-8">
+                <h2 class="glow-blue font-black text-2xl uppercase tracking-tighter mb-4 px-2">AI LOGISTICS</h2>
+                
+                <div class="module-card border-blue p-8 bg-[#00F2FF]/5 relative">
+                    <button onclick="openGuide()" class="absolute top-4 right-4 glow-blue opacity-50 hover:opacity-100 flex items-center space-x-1">
+                        <span class="text-[10px] font-black uppercase tracking-tighter">Guide</span><i data-lucide="help-circle" size="14"></i>
+                    </button>
+                    <i data-lucide="scan-text" class="glow-blue mb-4" size="32"></i>
+                    <p class="header-font font-black text-lg mb-6 text-white">SMART ANALYZER</p>
+                    <div class="space-y-4 mb-6">
+                        <input type="text" placeholder="VEHICLE YEAR" class="tech-input uppercase">
+                        <input type="text" placeholder="VEHICLE MAKE" class="tech-input uppercase">
+                        <input type="text" placeholder="VEHICLE MODEL" class="tech-input uppercase">
+                    </div>
+                    <button class="w-full bg-[#00F2FF] text-black py-5 btn-pro text-sm hover:brightness-125">RUN NEURAL SCAN</button>
+                </div>
+
+                <div class="module-card border-orange p-8 bg-[#FFAC1C]/5">
+                    <i data-lucide="key" class="glow-orange mb-4" size="32"></i>
+                    <p class="header-font font-black text-lg mb-2 text-white">ELITE VALET</p>
+                    <p class="text-[11px] text-white/40 uppercase font-black mb-8 leading-relaxed">Pick-Up / Drop-Off Service for professional same-day wheel balancing & repair.</p>
+                    <button onclick="initPay(45, 'ELITE CONCIERGE VALET')" class="w-full bg-[#FFAC1C] text-black py-5 btn-pro text-sm hover:brightness-110">INITIATE VALET</button>
+                </div>
+                
+                <div class="p-8 bg-black border border-white/10">
+                    <p class="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] mb-4">Operations</p>
+                    <div class="space-y-4 font-black text-sm uppercase">
+                        <div class="flex justify-between border-b border-white/5 pb-2"><span>MON-FRI</span><span class="glow-green">08:00 - 17:00</span></div>
+                        <div class="flex justify-between"><span>SATURDAY</span><span class="glow-green">08:00 - 14:00</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COL 3: POWER NODE -->
+            <div class="lg:col-span-3 space-y-8">
+                <h2 class="glow-red font-black text-2xl uppercase tracking-tighter mb-4 px-2">POWER NODE</h2>
+                
+                <div class="module-card border-red p-8 bg-red-950/10">
+                    <div class="flex items-center space-x-5 mb-8">
+                        <i data-lucide="flame" class="glow-red" size="40"></i>
+                        <div>
+                            <p class="text-[11px] font-black italic uppercase glow-red">AI URGENCY PROTOCOL</p>
+                            <p class="font-bold text-lg glow-red tracking-tighter uppercase italic">90 MINS DELIVERY</p>
+                            <p class="font-bold text-4xl glow-red mt-1">$60</p>
+                        </div>
+                    </div>
+                    <button onclick="initPay(60, 'URGENCY PROTOCOL DISPATCH')" class="w-full neon-red-bg text-white py-6 btn-pro text-lg">INITIATE DISPATCH</button>
+                </div>
+
+                <div class="module-card border-green p-8 bg-green-950/10">
+                    <div class="flex items-center space-x-5 mb-8">
+                        <i data-lucide="package" class="glow-green" size="40"></i>
+                        <div>
+                            <p class="text-[11px] font-black italic uppercase glow-green">SMART DELIVERY</p>
+                            <p class="font-bold text-lg glow-green tracking-tighter uppercase italic">3-6HRS SAME DAY</p>
+                            <p class="font-bold text-4xl glow-green mt-1">$15</p>
+                        </div>
+                    </div>
+                    <button onclick="initPay(15, 'SMART DELIVERY SERVICE')" class="w-full bg-[#39FF14] text-black py-6 btn-pro text-lg hover:brightness-110">AUTO-SCHEDULE</button>
+                </div>
+
+                <div class="module-card border-2 border-[#BC13FE]/40 p-8 text-center">
+                    <i data-lucide="truck" class="glow-purple mb-2 mx-auto" size="24"></i>
+                    <p class="text-[10px] text-white font-black uppercase tracking-widest">Neural Mobile Deployment</p>
+                </div>
+            </div>
+
+            <!-- COL 4: AI TERMINAL -->
+            <div class="lg:col-span-3 space-y-6 pt-10">
+                <div class="module-card border-2 border-[#FFF01F] p-8 bg-[#FFF01F]/5">
+                    <i data-lucide="bot" class="glow-yellow mb-6" size="40"></i>
+                    <p class="header-font font-black text-lg mb-6 glow-yellow uppercase">AI Quote Engine</p>
+                    <input type="text" placeholder="INPUT SIZE..." class="tech-input uppercase mb-6 py-6 text-lg">
+                    <button class="w-full bg-[#FFF01F] text-black py-6 btn-pro text-sm">GET INSTANT PRICE</button>
+                    <a href="tel:5164615856" class="flex items-center justify-center w-full py-4 mt-6 bg-black border border-white/10 text-white font-black uppercase text-xs hover:border-yellow-400">
+                        <i data-lucide="message-square" size="16" class="mr-3 glow-yellow"></i> SMS: 516.461.5856
+                    </a>
+                </div>
+
+                <div class="module-card border border-white/10 p-6 bg-black/80 text-center">
+                    <a href="tel:5164615856" class="flex items-center justify-center space-x-4 neon-flicker">
+                        <i data-lucide="phone-call" class="text-white" size="24"></i>
+                        <p class="header-font font-black text-sm text-white italic uppercase tracking-widest">DIRECT: 516.461.5856</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 text-center text-[12px] font-black opacity-40 uppercase tracking-[1em] pb-10 border-t border-white/5 pt-12 neon-flicker">
+            NYC TECHNOLOGY CORE • TIREDASH AUTH: 516.461.5856
+        </div>
     </div>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Prevent Pull-to-Refresh on iPad
-        document.body.addEventListener('touchmove', function(e) {
-            if (e.touches.length > 1) e.preventDefault();
-        }, {passive: false});
+        function initPay(amt, svc) {
+            document.getElementById('pay-amt').innerText = '$' + amt;
+            document.getElementById('pay-service').innerText = svc;
+            document.getElementById('pay-modal').style.display = 'flex';
+        }
+        function closePay() { document.getElementById('pay-modal').style.display = 'none'; }
+        function openGuide() { document.getElementById('guide-modal').style.display = 'flex'; }
+        function closeGuide() { document.getElementById('guide-modal').style.display = 'none'; }
+
+        // THE MASTER 150+ DATABASE
+        const inventory = [
+            /* PARTNER SPECIALS */
+            { s: "235/75R15", p: "90", t: "pas" }, { s: "225/75R15", p: "90", t: "pas" },
+            { s: "225/70R16", p: "90", t: "pas" }, { s: "275/50R22", p: "169", t: "pas" },
+            /* COMMERCIAL */
+            { s: "295/75R22.5", p: "385", t: "com" }, { s: "11R22.5", p: "365", t: "com" },
+            { s: "225/70R19.5", p: "245", t: "com" }, { s: "245/70R19.5", p: "265", t: "com" },
+            { s: "255/70R22.5", p: "310", t: "com" }, { s: "11R24.5", p: "410", t: "com" },
+            /* EV & PERFORMANCE */
+            { s: "235/45R18 (EV)", p: "135", t: "ev" }, { s: "255/45R19 (EV)", p: "165", t: "ev" },
+            { s: "255/40R20 (EV)", p: "185", t: "ev" }, { s: "275/35R21", p: "210", t: "ev" }
+        ];
+
+        const board = document.getElementById('master-board');
+        inventory.forEach(i => {
+            const div = document.createElement('div'); div.className = 'price-item';
+            const color = i.t === 'com' ? 'glow-orange' : (i.t === 'ev' ? 'glow-blue' : 'glow-green');
+            div.innerHTML = `<span class="uppercase">${i.s}</span><span class="${color}">$${i.p}</span>`;
+            board.appendChild(div);
+        });
+
+        // 150+ DATABASE GENERATION
+        const sizes = ["175/65R14", "185/60R14", "185/65R14", "185/70R14", "195/60R14", "205/70R14", "185/60R15", "185/65R15", "195/50R15", "195/55R15", "195/60R15", "195/65R15", "205/60R15", "205/65R15", "205/70R15", "215/65R15", "215/70R15", "215/75R15", "225/70R15", "235/70R15", "185/55R16", "195/45R16", "195/50R16", "195/55R16", "195/60R16", "205/45R16", "205/50R16", "205/55R16", "205/60R16", "205/65R16", "215/55R16", "215/60R16", "215/65R16", "215/70R16", "225/50R16", "225/55R16", "225/60R16", "225/65R16", "235/60R16", "235/65R16", "235/70R16", "235/85R16", "245/70R16", "245/75R16", "255/65R16", "255/70R16", "265/70R16", "265/75R16", "205/40R17", "205/45R17", "205/50R17", "215/45R17", "215/50R17", "215/55R17", "215/60R17", "215/65R17", "225/45R17", "225/50R17", "225/55R17", "225/60R17", "225/65R17", "235/40R17", "235/45R17", "235/50R17", "235/55R17", "235/60R17", "235/65R17", "245/40R17", "245/45R17", "245/65R17", "245/70R17", "245/75R17", "255/65R17", "265/60R17", "265/65R17", "265/70R17", "285/70R17", "215/40R18", "215/45R18", "225/40R18", "225/45R18", "225/50R18", "225/55R18", "225/60R18", "235/40R18", "235/45R18", "235/50R18", "235/55R18", "235/60R18", "235/65R18", "245/35R18", "245/40R18", "245/45R18", "245/50R18", "245/60R18", "255/35R18", "255/40R18", "255/45R18", "255/55R18", "255/60R18", "255/65R18", "255/70R18", "265/35R18", "265/60R18", "265/65R18", "265/70R18", "275/65R18", "275/70R18", "285/60R18", "225/40R19", "225/45R19", "225/55R19", "235/35R19", "235/40R19", "235/45R19", "235/50R19", "235/55R19", "245/35R19", "245/40R19", "245/45R19", "245/50R19", "255/35R19", "255/40R19", "255/45R19", "255/50R19", "255/55R19", "265/30R19", "265/35R19", "265/40R19", "265/50R19", "275/30R19", "275/35R19", "275/40R19", "275/45R19", "285/30R19", "285/35R19", "285/40R19", "285/45R19", "235/35R20", "235/45R20", "235/55R20", "245/35R20", "245/40R20", "245/45R20", "245/50R20", "255/35R20", "255/40R20", "255/45R20", "255/50R20", "255/55R20", "265/35R20", "265/40R20", "265/45R20", "265/50R20", "275/30R20", "275/35R20", "275/40R20", "275/45R20", "275/55R20", "275/60R20", "285/30R20", "285/35R20", "285/40R20", "285/45R20", "285/50R20", "295/30R20", "295/35R20", "295/40R20", "305/30R20", "245/35R21", "245/40R21", "255/30R21", "255/35R21", "265/30R21", "265/35R21", "265/40R21", "265/45R21", "275/30R21", "275/35R21", "275/40R21", "285/30R21", "285/35R21", "295/25R21", "295/30R21", "295/35R21", "305/30R21", "265/30R22", "265/35R22", "265/40R22", "275/35R22", "275/40R22", "275/45R22", "285/30R22", "285/35R22", "285/40R22", "285/45R22", "295/25R22", "295/30R22", "305/40R22", "305/45R22", "325/35R22"];
+
+        sizes.forEach((s, idx) => {
+            if (inventory.some(item => item.s === s)) return;
+            const div = document.createElement('div'); div.className = 'price-item';
+            const rim = parseInt(s.split('R')[1]);
+            const base = rim < 16 ? 45 : rim < 18 ? 65 : rim < 20 ? 95 : 145;
+            div.innerHTML = `<span>${s}</span><span class="glow-green">$${base + (idx % 15)}</span>`;
+            board.appendChild(div);
+        });
     </script>
 </body>
-</html> 
- 
+</html>
