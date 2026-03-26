@@ -1,9 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TIREDASH | PRO AI TECH HUB v5.3</title>
+    
+    <!-- MASTER SEO & BRANDING -->
+    <title>TIREDASH NYC | AI Roadside Logistics & Emergency Tire Dispatch</title>
+    <meta name="description" content="TireDash NYC: The city's only AI-automated tire logistics platform. 90-minute emergency response, Elite Valet concierge, and automated pricing for 150+ sizes. Serving all 5 boroughs.">
+    <link rel="canonical" href="https://tiredashnyc.com" />
+    
+    <!-- GOOGLE VERIFICATION -->
+    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
+
+    <!-- SERVICE AREA BUSINESS (SAB) SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "TireDash NYC",
+      "description": "AI-Powered Mobile Tire Logistics and 90-Minute Emergency Dispatch.",
+      "url": "https://tiredashnyc.com",
+      "telephone": "516-461-5856",
+      "priceRange": "$$",
+      "areaServed": ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"],
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "17:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -14,26 +41,16 @@
             --orange: #FFAC1C; --green: #39FF14; --yellow: #FFF01F; --red: #FF3131;
         }
 
-        body { 
-            background-color: #010103; color: #ffffff;
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden; -webkit-font-smoothing: antialiased;
-        }
-
+        body { background-color: #010103; color: #ffffff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         .header-font { font-family: 'Orbitron', sans-serif; }
 
-        /* 90s NYC Neon Flicker & Bloom */
         @keyframes neon-flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: brightness(1); }
             20%, 24%, 55% { opacity: 0.8; filter: brightness(1.2); }
         }
         .neon-flicker { animation: neon-flicker 5s infinite linear; }
 
-        .film-strip {
-            background-image: linear-gradient(90deg, #fff 50%, transparent 50%);
-            background-size: 24px 12px; height: 12px; width: 100%; opacity: 0.8;
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
-        }
+        .film-strip { background-image: linear-gradient(90deg, #fff 50%, transparent 50%); background-size: 24px 12px; height: 12px; width: 100%; opacity: 0.8; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
 
         .glow-pink { color: var(--pink); text-shadow: 0 0 10px var(--pink), 0 0 20px rgba(255,0,127,0.4); }
         .glow-blue { color: var(--blue); text-shadow: 0 0 10px var(--blue); }
@@ -51,46 +68,33 @@
         .module-card { background: rgba(5, 5, 10, 0.95); border-radius: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .module-card:hover { transform: translateY(-4px) scale(1.01); background: #080810; }
 
-        .crt-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
-            background-size: 100% 3px, 3px 100%; pointer-events: none; z-index: 9999; opacity: 0.3;
-        }
+        .crt-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04)); background-size: 100% 3px, 3px 100%; pointer-events: none; z-index: 9999; opacity: 0.3; }
 
         .price-list-container::-webkit-scrollbar { width: 4px; }
-        .price-list-container::-webkit-scrollbar-thumb { background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+        .price-list-container::-webkit-scrollbar-thumb { background: var(--pink); }
 
-        .tech-input {
-            background: #000; border: 1px solid rgba(255,255,255,0.1); color: #fff;
-            padding: 12px; font-family: 'Space Grotesk'; font-weight: 700; width: 100%; outline: none;
-        }
+        .tech-input { background: #000; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; font-weight: 700; width: 100%; outline: none; }
         .tech-input:focus { border-color: var(--blue); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
 
-        .btn-pro { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 0.1em; transition: all 0.2s; text-transform: uppercase; }
-        
-        .price-item {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 10px;
-            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem;
-        }
+        .btn-pro { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 0.1em; transition: all 0.2s; text-transform: uppercase; cursor: pointer; }
+        .btn-pro:active { transform: scale(0.98); }
 
-        .system-modal {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98);
-            z-index: 10000; backdrop-filter: blur(20px); align-items: center; justify-content: center;
-        }
+        .price-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 10px; font-weight: 700; font-size: 0.85rem; }
+
+        .system-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; backdrop-filter: blur(20px); align-items: center; justify-content: center; }
     </style>
 </head>
 <body class="p-4 md:p-8">
     <div class="crt-overlay"></div>
 
-    <!-- PAYMENT GATEWAY MODAL -->
+    <!-- PAYMENT MODAL -->
     <div id="pay-modal" class="system-modal p-4">
-        <div class="max-w-md w-full border-2 border-blue bg-black p-8 relative shadow-[0_0_100px_rgba(0,242,255,0.2)]">
+        <div class="max-w-md w-full border-2 border-[#00F2FF] bg-black p-8 relative shadow-[0_0_100px_rgba(0,242,255,0.2)]">
             <button onclick="closePay()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
             <div class="text-center mb-10">
                 <i data-lucide="zap" class="glow-blue mx-auto mb-4" size="48"></i>
-                <h3 class="header-font font-black text-2xl glow-blue italic">SECURE GATEWAY</h3>
-                <p id="pay-service" class="text-[10px] font-black tracking-[0.4em] text-white/40 mt-2 uppercase">AI DISPATCH AUTH</p>
+                <h3 class="header-font font-black text-2xl glow-blue italic uppercase">Secure Terminal</h3>
+                <p id="pay-service" class="text-[10px] font-black tracking-[0.4em] text-white/40 mt-2">AI DISPATCH AUTH</p>
                 <p id="pay-amt" class="text-6xl font-black mt-6 glow-green">$60</p>
             </div>
             <div class="space-y-4">
@@ -104,23 +108,23 @@
         </div>
     </div>
 
-    <!-- TIRE GUIDE HUD -->
+    <!-- SIDEWALL DECODER MODAL -->
     <div id="guide-modal" class="system-modal p-4">
         <div class="max-w-xl w-full border-2 border-[#BC13FE] bg-black p-8 relative shadow-[0_0_80px_rgba(188,19,254,0.2)]">
             <button onclick="closeGuide()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
             <div class="text-center mb-8">
-                <h3 class="header-font font-black text-2xl glow-pink">SIDEWALL DECODER</h3>
-                <p class="text-[10px] font-black text-white/40 tracking-widest mt-2 uppercase">Neural-Link Reference Guide</p>
+                <h3 class="header-font font-black text-2xl glow-pink uppercase">Sidewall Scan</h3>
+                <p class="text-[10px] font-black text-white/40 tracking-widest mt-2 uppercase">Match numbers for automated fitment</p>
             </div>
-            <div class="border-2 border-white/5 p-6 rounded mb-6 text-center">
-                <p class="text-3xl font-black tracking-widest mb-4">
+            <div class="border-2 border-white/5 p-8 rounded text-center mb-6">
+                <p class="text-4xl font-black tracking-widest mb-4">
                     <span class="glow-pink">295</span> / <span class="glow-orange">75</span> R <span class="glow-green">22.5</span>
                 </p>
-                <div class="grid grid-cols-3 gap-2 text-[9px] font-black uppercase text-white/60">
-                    <div>WIDTH (MM)</div><div>HEIGHT (%)</div><div>RIM (IN)</div>
+                <div class="grid grid-cols-3 gap-2 text-[10px] font-black uppercase text-white/60">
+                    <div>Width</div><div>Height</div><div>Rim Size</div>
                 </div>
             </div>
-            <button onclick="closeGuide()" class="w-full bg-[#BC13FE] text-white py-5 btn-pro text-sm">BACK TO TERMINAL</button>
+            <button onclick="closeGuide()" class="w-full bg-[#BC13FE] text-white py-5 btn-pro">SYNC TERMINAL</button>
         </div>
     </div>
 
@@ -128,11 +132,11 @@
     <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] mb-6 px-2 max-w-[1700px] mx-auto neon-flicker">
         <div class="text-[#FFF01F] flex items-center">
             <i data-lucide="cpu" size="14" class="mr-2"></i>
-            42ND ST TERMINAL // MASTER DB v5.3 // NYC
+            42ND ST TERMINAL // TIREDASHNYC.COM // NYC HUB
         </div>
         <div class="flex items-center space-x-6">
-            <span class="glow-red animate-pulse">● SYSTEM_STATUS: AUTOMATED</span>
-            <a href="tel:5164615856" class="glow-blue flex items-center bg-white/5 border border-[#00F2FF]/30 px-4 py-2 hover:bg-white/10">
+            <span class="glow-red animate-pulse">● NEURAL_LINK: ONLINE</span>
+            <a href="tel:5164615856" class="glow-blue flex items-center bg-white/5 border border-[#00F2FF]/30 px-4 py-2 rounded">
                 <i data-lucide="phone-call" size="12" class="mr-2"></i> 516.461.5856
             </a>
         </div>
@@ -143,38 +147,33 @@
         <div class="film-strip mb-8"></div>
         <header class="text-center mb-8 relative">
             <h1 class="text-7xl md:text-[11rem] font-black italic tracking-tighter glow-pink header-font leading-[0.75] uppercase neon-flicker mb-6">TIREDASH</h1>
-            <p class="text-[14px] font-black tracking-[0.7em] uppercase glow-blue">ROAD-LOGISTICS AUTOMATION • NYC HUB</p>
+            <p class="text-[14px] font-black tracking-[0.7em] uppercase glow-blue">ROAD-LOGISTICS AUTOMATION • NYC PROPERTY</p>
         </header>
         <div class="film-strip mb-12"></div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
             
-            <!-- COL 1: MASTER PRICE BOARD (150+ SIZES) -->
+            <!-- MASTER BOARD -->
             <div class="lg:col-span-3">
                 <div class="flex justify-between items-center mb-6 px-2">
                     <h2 class="glow-pink font-black text-2xl uppercase tracking-tighter">AI BOARD</h2>
-                    <span class="text-[10px] font-black bg-pink-600 text-black px-4 py-1 neon-flicker">FULL 150 LIST</span>
+                    <span class="text-[10px] font-black bg-pink-600 text-black px-4 py-1 neon-flicker uppercase">Synced</span>
                 </div>
                 <div class="module-card border-pink p-6">
                     <div class="flex justify-between text-[11px] font-black text-white/30 uppercase mb-4 px-2 border-b border-white/10 pb-3">
                         <span>SPEC / SIZE</span><span>NET $</span>
                     </div>
-                    <div id="master-board" class="price-list-container h-[800px] overflow-y-auto px-1 pr-4">
-                        <!-- Content Generated by JS -->
-                    </div>
+                    <div id="master-board" class="price-list-container h-[850px] overflow-y-auto px-1 pr-4"></div>
                 </div>
             </div>
 
-            <!-- COL 2: AI LOGISTICS -->
+            <!-- LOGISTICS -->
             <div class="lg:col-span-3 space-y-8">
                 <h2 class="glow-blue font-black text-2xl uppercase tracking-tighter mb-4 px-2">AI LOGISTICS</h2>
-                
                 <div class="module-card border-blue p-8 bg-[#00F2FF]/5 relative">
-                    <button onclick="openGuide()" class="absolute top-4 right-4 glow-blue opacity-50 hover:opacity-100 flex items-center space-x-1">
-                        <span class="text-[10px] font-black uppercase tracking-tighter">Guide</span><i data-lucide="help-circle" size="14"></i>
-                    </button>
+                    <button onclick="openGuide()" class="absolute top-4 right-4 glow-blue opacity-50 hover:opacity-100 flex items-center space-x-1 uppercase text-[10px] font-black tracking-tighter">Help <i data-lucide="help-circle" size="14"></i></button>
                     <i data-lucide="scan-text" class="glow-blue mb-4" size="32"></i>
-                    <p class="header-font font-black text-lg mb-6 text-white">SMART ANALYZER</p>
+                    <p class="header-font font-black text-lg mb-6">SMART ANALYZER</p>
                     <div class="space-y-4 mb-6">
                         <input type="text" placeholder="VEHICLE YEAR" class="tech-input uppercase">
                         <input type="text" placeholder="VEHICLE MAKE" class="tech-input uppercase">
@@ -182,28 +181,25 @@
                     </div>
                     <button class="w-full bg-[#00F2FF] text-black py-5 btn-pro text-sm hover:brightness-125">RUN NEURAL SCAN</button>
                 </div>
-
                 <div class="module-card border-orange p-8 bg-[#FFAC1C]/5">
                     <i data-lucide="key" class="glow-orange mb-4" size="32"></i>
-                    <p class="header-font font-black text-lg mb-2 text-white">ELITE VALET</p>
+                    <p class="header-font font-black text-lg mb-2">ELITE VALET</p>
                     <p class="text-[11px] text-white/40 uppercase font-black mb-8 leading-relaxed">Pick-Up / Drop-Off Service for professional same-day wheel balancing & repair.</p>
-                    <button onclick="initPay(45, 'ELITE CONCIERGE VALET')" class="w-full bg-[#FFAC1C] text-black py-5 btn-pro text-sm hover:brightness-110">INITIATE VALET</button>
+                    <button onclick="initPay(45, 'ELITE VALET CONCIERGE')" class="w-full bg-[#FFAC1C] text-black py-5 btn-pro text-sm">INITIATE VALET</button>
                 </div>
-                
-                <div class="p-8 bg-black border border-white/10">
-                    <p class="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] mb-4">Operations</p>
+                <div class="p-8 bg-black border border-white/10 rounded">
                     <div class="space-y-4 font-black text-sm uppercase">
-                        <div class="flex justify-between border-b border-white/5 pb-2"><span>MON-FRI</span><span class="glow-green">08:00 - 17:00</span></div>
-                        <div class="flex justify-between"><span>SATURDAY</span><span class="glow-green">08:00 - 14:00</span></div>
+                        <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white/40">MON-FRI</span><span class="glow-green">08:00 - 17:00</span></div>
+                        <div class="flex justify-between"><span class="text-white/40">SATURDAY</span><span class="glow-green">08:00 - 14:00</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- COL 3: POWER NODE -->
+            <!-- POWER NODE -->
             <div class="lg:col-span-3 space-y-8">
                 <h2 class="glow-red font-black text-2xl uppercase tracking-tighter mb-4 px-2">POWER NODE</h2>
-                
-                <div class="module-card border-red p-8 bg-red-950/10">
+                <div class="module-card border-red p-8 bg-red-950/10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-[#FF3131] text-black font-black text-[10px] px-3 py-1 uppercase tracking-tighter">URGENT</div>
                     <div class="flex items-center space-x-5 mb-8">
                         <i data-lucide="flame" class="glow-red" size="40"></i>
                         <div>
@@ -214,7 +210,6 @@
                     </div>
                     <button onclick="initPay(60, 'URGENCY PROTOCOL DISPATCH')" class="w-full neon-red-bg text-white py-6 btn-pro text-lg">INITIATE DISPATCH</button>
                 </div>
-
                 <div class="module-card border-green p-8 bg-green-950/10">
                     <div class="flex items-center space-x-5 mb-8">
                         <i data-lucide="package" class="glow-green" size="40"></i>
@@ -224,86 +219,93 @@
                             <p class="font-bold text-4xl glow-green mt-1">$15</p>
                         </div>
                     </div>
-                    <button onclick="initPay(15, 'SMART DELIVERY SERVICE')" class="w-full bg-[#39FF14] text-black py-6 btn-pro text-lg hover:brightness-110">AUTO-SCHEDULE</button>
+                    <button onclick="initPay(15, 'SMART DELIVERY SERVICE')" class="w-full bg-[#39FF14] text-black py-6 btn-pro text-lg">AUTO-SCHEDULE</button>
                 </div>
-
-                <div class="module-card border-2 border-[#BC13FE]/40 p-8 text-center">
-                    <i data-lucide="truck" class="glow-purple mb-2 mx-auto" size="24"></i>
+                <div class="module-card border-2 border-[#BC13FE]/40 p-8 text-center bg-[#BC13FE]/5">
+                    <i data-lucide="truck" class="glow-purple mb-4 mx-auto" size="24"></i>
                     <p class="text-[10px] text-white font-black uppercase tracking-widest">Neural Mobile Deployment</p>
+                    <button class="w-full mt-4 bg-[#BC13FE] text-white py-3 btn-pro text-xs">BOOK MOBILE VAN</button>
                 </div>
             </div>
 
-            <!-- COL 4: AI TERMINAL -->
+            <!-- TERMINAL -->
             <div class="lg:col-span-3 space-y-6 pt-10">
                 <div class="module-card border-2 border-[#FFF01F] p-8 bg-[#FFF01F]/5">
                     <i data-lucide="bot" class="glow-yellow mb-6" size="40"></i>
-                    <p class="header-font font-black text-lg mb-6 glow-yellow uppercase">AI Quote Engine</p>
-                    <input type="text" placeholder="INPUT SIZE..." class="tech-input uppercase mb-6 py-6 text-lg">
+                    <p class="header-font font-black text-lg mb-6 glow-yellow uppercase italic">AI Quote Engine</p>
+                    <input type="text" placeholder="INPUT SIZE..." class="tech-input uppercase mb-6 py-6 text-lg border-yellow-500/30">
                     <button class="w-full bg-[#FFF01F] text-black py-6 btn-pro text-sm">GET INSTANT PRICE</button>
                     <a href="tel:5164615856" class="flex items-center justify-center w-full py-4 mt-6 bg-black border border-white/10 text-white font-black uppercase text-xs hover:border-yellow-400">
                         <i data-lucide="message-square" size="16" class="mr-3 glow-yellow"></i> SMS: 516.461.5856
                     </a>
                 </div>
-
                 <div class="module-card border border-white/10 p-6 bg-black/80 text-center">
                     <a href="tel:5164615856" class="flex items-center justify-center space-x-4 neon-flicker">
                         <i data-lucide="phone-call" class="text-white" size="24"></i>
-                        <p class="header-font font-black text-sm text-white italic uppercase tracking-widest">DIRECT: 516.461.5856</p>
+                        <p class="header-font font-black text-sm text-white italic uppercase tracking-[0.2em]">DIRECT: 516.461.5856</p>
                     </a>
+                </div>
+                <div class="mt-8 p-6 border border-dashed border-white/20 bg-black/50 rounded">
+                    <p class="text-[10px] font-black text-white/20 uppercase mb-4 flex justify-between"><span>CORE_STATUS</span><span>SECURE_LINK</span></p>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-white/40">Neural Load</span><span class="glow-green">Optimal</span></div>
+                        <div class="grid grid-cols-10 gap-1"><div class="h-1 bg-green-500 shadow-[0_0_8px_#39FF14]"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-white/5"></div><div class="h-1 bg-white/5"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="mt-24 text-center text-[12px] font-black opacity-40 uppercase tracking-[1em] pb-10 border-t border-white/5 pt-12 neon-flicker">
+        <footer class="mt-24 text-center text-[12px] font-black opacity-40 uppercase tracking-[1em] pb-10 border-t border-white/5 pt-12 neon-flicker">
             NYC TECHNOLOGY CORE • TIREDASH AUTH: 516.461.5856
-        </div>
+        </footer>
     </div>
 
     <script>
         lucide.createIcons();
-
-        function initPay(amt, svc) {
-            document.getElementById('pay-amt').innerText = '$' + amt;
-            document.getElementById('pay-service').innerText = svc;
-            document.getElementById('pay-modal').style.display = 'flex';
-        }
+        function initPay(amt, svc) { document.getElementById('pay-amt').innerText = '$' + amt; document.getElementById('pay-service').innerText = svc; document.getElementById('pay-modal').style.display = 'flex'; }
         function closePay() { document.getElementById('pay-modal').style.display = 'none'; }
         function openGuide() { document.getElementById('guide-modal').style.display = 'flex'; }
         function closeGuide() { document.getElementById('guide-modal').style.display = 'none'; }
 
-        // THE MASTER 150+ DATABASE
+        // MASTER 150+ TIRE DATABASE
         const inventory = [
-            /* PARTNER SPECIALS */
+            /* PARTNER REQUESTED SPECIALS ($90 & $169) */
             { s: "235/75R15", p: "90", t: "pas" }, { s: "225/75R15", p: "90", t: "pas" },
             { s: "225/70R16", p: "90", t: "pas" }, { s: "275/50R22", p: "169", t: "pas" },
-            /* COMMERCIAL */
+            /* PRIMARY COMMERCIAL */
             { s: "295/75R22.5", p: "385", t: "com" }, { s: "11R22.5", p: "365", t: "com" },
             { s: "225/70R19.5", p: "245", t: "com" }, { s: "245/70R19.5", p: "265", t: "com" },
             { s: "255/70R22.5", p: "310", t: "com" }, { s: "11R24.5", p: "410", t: "com" },
-            /* EV & PERFORMANCE */
+            { s: "285/75R24.5", p: "425", t: "com" },
+            /* EV & HIGH END */
             { s: "235/45R18 (EV)", p: "135", t: "ev" }, { s: "255/45R19 (EV)", p: "165", t: "ev" },
-            { s: "255/40R20 (EV)", p: "185", t: "ev" }, { s: "275/35R21", p: "210", t: "ev" }
+            { s: "255/40R20 (EV)", p: "185", t: "ev" }, { s: "275/35R21", p: "210", t: "ev" },
+            { s: "285/30R22", p: "245", t: "ev" },
+            /* NYC TOP SELLERS */
+            { s: "225/65R17", p: "65", t: "pas" }, { s: "205/55R16", p: "53", t: "pas" },
+            { s: "195/65R15", p: "49", t: "pas" }, { s: "215/55R17", p: "60", t: "pas" },
+            { s: "225/60R18", p: "72", t: "pas" }, { s: "235/60R18", p: "78", t: "pas" },
+            { s: "245/45R18", p: "85", t: "pas" }, { s: "265/70R17", p: "110", t: "pas" }
         ];
 
         const board = document.getElementById('master-board');
         inventory.forEach(i => {
             const div = document.createElement('div'); div.className = 'price-item';
             const color = i.t === 'com' ? 'glow-orange' : (i.t === 'ev' ? 'glow-blue' : 'glow-green');
-            div.innerHTML = `<span class="uppercase">${i.s}</span><span class="${color}">$${i.p}</span>`;
+            div.innerHTML = `<span class="uppercase tracking-wider">${i.s}</span><span class="${color}">$${i.p}</span>`;
             board.appendChild(div);
         });
 
-        // 150+ DATABASE GENERATION
-        const sizes = ["175/65R14", "185/60R14", "185/65R14", "185/70R14", "195/60R14", "205/70R14", "185/60R15", "185/65R15", "195/50R15", "195/55R15", "195/60R15", "195/65R15", "205/60R15", "205/65R15", "205/70R15", "215/65R15", "215/70R15", "215/75R15", "225/70R15", "235/70R15", "185/55R16", "195/45R16", "195/50R16", "195/55R16", "195/60R16", "205/45R16", "205/50R16", "205/55R16", "205/60R16", "205/65R16", "215/55R16", "215/60R16", "215/65R16", "215/70R16", "225/50R16", "225/55R16", "225/60R16", "225/65R16", "235/60R16", "235/65R16", "235/70R16", "235/85R16", "245/70R16", "245/75R16", "255/65R16", "255/70R16", "265/70R16", "265/75R16", "205/40R17", "205/45R17", "205/50R17", "215/45R17", "215/50R17", "215/55R17", "215/60R17", "215/65R17", "225/45R17", "225/50R17", "225/55R17", "225/60R17", "225/65R17", "235/40R17", "235/45R17", "235/50R17", "235/55R17", "235/60R17", "235/65R17", "245/40R17", "245/45R17", "245/65R17", "245/70R17", "245/75R17", "255/65R17", "265/60R17", "265/65R17", "265/70R17", "285/70R17", "215/40R18", "215/45R18", "225/40R18", "225/45R18", "225/50R18", "225/55R18", "225/60R18", "235/40R18", "235/45R18", "235/50R18", "235/55R18", "235/60R18", "235/65R18", "245/35R18", "245/40R18", "245/45R18", "245/50R18", "245/60R18", "255/35R18", "255/40R18", "255/45R18", "255/55R18", "255/60R18", "255/65R18", "255/70R18", "265/35R18", "265/60R18", "265/65R18", "265/70R18", "275/65R18", "275/70R18", "285/60R18", "225/40R19", "225/45R19", "225/55R19", "235/35R19", "235/40R19", "235/45R19", "235/50R19", "235/55R19", "245/35R19", "245/40R19", "245/45R19", "245/50R19", "255/35R19", "255/40R19", "255/45R19", "255/50R19", "255/55R19", "265/30R19", "265/35R19", "265/40R19", "265/50R19", "275/30R19", "275/35R19", "275/40R19", "275/45R19", "285/30R19", "285/35R19", "285/40R19", "285/45R19", "235/35R20", "235/45R20", "235/55R20", "245/35R20", "245/40R20", "245/45R20", "245/50R20", "255/35R20", "255/40R20", "255/45R20", "255/50R20", "255/55R20", "265/35R20", "265/40R20", "265/45R20", "265/50R20", "275/30R20", "275/35R20", "275/40R20", "275/45R20", "275/55R20", "275/60R20", "285/30R20", "285/35R20", "285/40R20", "285/45R20", "285/50R20", "295/30R20", "295/35R20", "295/40R20", "305/30R20", "245/35R21", "245/40R21", "255/30R21", "255/35R21", "265/30R21", "265/35R21", "265/40R21", "265/45R21", "275/30R21", "275/35R21", "275/40R21", "285/30R21", "285/35R21", "295/25R21", "295/30R21", "295/35R21", "305/30R21", "265/30R22", "265/35R22", "265/40R22", "275/35R22", "275/40R22", "275/45R22", "285/30R22", "285/35R22", "285/40R22", "285/45R22", "295/25R22", "295/30R22", "305/40R22", "305/45R22", "325/35R22"];
-
-        sizes.forEach((s, idx) => {
+        const list = ["175/65R14", "185/60R14", "185/65R14", "185/70R14", "195/60R14", "205/70R14", "185/60R15", "185/65R15", "195/50R15", "195/55R15", "195/60R15", "195/65R15", "205/60R15", "205/65R15", "205/70R15", "215/65R15", "215/70R15", "215/75R15", "225/70R15", "235/70R15", "185/55R16", "195/45R16", "195/50R16", "195/55R16", "195/60R16", "205/45R16", "205/50R16", "205/55R16", "205/60R16", "205/65R16", "215/55R16", "215/60R16", "215/65R16", "215/70R16", "225/50R16", "225/55R16", "225/60R16", "225/65R16", "235/60R16", "235/65R16", "235/70R16", "235/85R16", "245/70R16", "245/75R16", "255/65R16", "255/70R16", "265/70R16", "265/75R16", "205/40R17", "205/45R17", "205/50R17", "215/45R17", "215/50R17", "215/55R17", "215/60R17", "215/65R17", "225/45R17", "225/50R17", "225/55R17", "225/60R17", "225/65R17", "235/40R17", "235/45R17", "235/50R17", "235/55R17", "235/60R17", "235/65R17", "245/40R17", "245/45R17", "245/65R17", "245/70R17", "245/75R17", "255/65R17", "265/60R17", "265/65R17", "285/70R17", "215/40R18", "215/45R18", "225/40R18", "225/45R18", "225/50R18", "225/55R18", "225/60R18", "235/40R18", "235/45R18", "235/50R18", "235/55R18", "235/60R18", "235/65R18", "245/35R18", "245/40R18", "245/45R18", "245/50R18", "245/60R18", "255/35R18", "255/40R18", "255/45R18", "255/55R18", "255/60R18", "255/65R18", "255/70R18", "265/35R18", "265/60R18", "265/65R18", "265/70R18", "275/65R18", "275/70R18", "285/60R18", "225/40R19", "225/45R19", "225/55R19", "235/35R19", "235/40R19", "235/45R19", "235/50R19", "235/55R19", "245/35R19", "245/40R19", "245/45R19", "245/50R19", "255/35R19", "255/40R19", "255/45R19", "255/50R19", "255/55R19", "265/30R19", "265/35R19", "265/40R19", "265/50R19", "275/30R19", "275/35R19", "275/40R19", "275/45R19", "285/30R19", "285/35R19", "285/40R19", "285/45R19", "235/35R20", "235/45R20", "235/55R20", "245/35R20", "245/40R20", "245/45R20", "245/50R20", "255/35R20", "255/40R20", "255/45R20", "255/50R20", "255/55R20", "265/35R20", "265/40R20", "265/45R20", "265/50R20", "275/30R20", "275/35R20", "275/40R20", "275/45R20", "275/55R20", "275/60R20", "285/30R20", "285/35R20", "285/40R20", "285/45R20", "285/50R20", "295/30R20", "295/35R20", "295/40R20", "305/30R20", "245/35R21", "245/40R21", "255/30R21", "255/35R21", "265/30R21", "265/35R21", "265/40R21", "265/45R21", "275/30R21", "275/35R21", "275/40R21", "285/30R21", "285/35R21", "295/25R21", "295/30R21", "295/35R21", "305/30R21", "265/30R22", "265/35R22", "265/40R22", "275/35R22", "275/40R22", "275/45R22", "285/30R22", "285/35R22", "285/40R22", "285/45R22", "295/25R22", "295/30R22", "305/40R22", "305/45R22", "325/35R22"];
+        list.forEach((s, idx) => {
             if (inventory.some(item => item.s === s)) return;
             const div = document.createElement('div'); div.className = 'price-item';
             const rim = parseInt(s.split('R')[1]);
             const base = rim < 16 ? 45 : rim < 18 ? 65 : rim < 20 ? 95 : 145;
-            div.innerHTML = `<span>${s}</span><span class="glow-green">$${base + (idx % 15)}</span>`;
+            div.innerHTML = `<span>${s}</span><span class="glow-green">$${base + (idx % 12)}</span>`;
             board.appendChild(div);
         });
     </script>
 </body>
-</html>
+</htm
+        
