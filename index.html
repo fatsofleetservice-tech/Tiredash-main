@@ -1,15 +1,14 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- MASTER SEO & BRANDING -->
-    <title>TIREDASH NYC | AI Roadside Logistics & Emergency Tire Dispatch</title>
-    <meta name="description" content="TireDash NYC: The city's only AI-automated tire logistics platform. 90-minute emergency response, Elite Valet concierge, and automated pricing for 150+ sizes. Serving all 5 boroughs.">
+    <title>TireDash NYC | Same-Day Tire Delivery — Hours, Not Days | 5 Boroughs + Long Island</title>
+    <meta name="description" content="New tires hand-delivered in hours, not days. Rush 90-minute delivery, same-day service, and Tire Butler valet across NYC, Nassau & Suffolk. 30 years in New York tires. Call or text 516-461-5856.">
     <link rel="canonical" href="https://tiredashnyc.com" />
-    
+
     <!-- GOOGLE VERIFICATION -->
     <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
 
@@ -19,11 +18,11 @@
       "@context": "https://schema.org",
       "@type": "AutoRepair",
       "name": "TireDash NYC",
-      "description": "AI-Powered Mobile Tire Logistics and 90-Minute Emergency Dispatch.",
+      "description": "Same-day tire delivery in hours, not days. Rush delivery, scheduled delivery, and Tire Butler valet service. From the family behind Fatso Tire — 30 years in New York.",
       "url": "https://tiredashnyc.com",
       "telephone": "516-461-5856",
       "priceRange": "$$",
-      "areaServed": ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"],
+      "areaServed": ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island", "Nassau County", "Suffolk County"],
       "openingHoursSpecification": [
         { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "17:00" },
         { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
@@ -34,278 +33,258 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;700&family=Inter:wght@400;900&display=swap');
-        
-        :root {
-            --pink: #FF007F; --blue: #00F2FF; --purple: #BC13FE;
-            --orange: #FFAC1C; --green: #39FF14; --yellow: #FFF01F; --red: #FF3131;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Barlow:wght@400;600;700&display=swap');
 
-        body { background-color: #010103; color: #ffffff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        .header-font { font-family: 'Orbitron', sans-serif; }
+        :root { --yellow: #FFD400; --black: #141414; --panel: #1C1C1C; --line: #2C2C2C; }
 
-        @keyframes neon-flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: brightness(1); }
-            20%, 24%, 55% { opacity: 0.8; filter: brightness(1.2); }
-        }
-        .neon-flicker { animation: neon-flicker 5s infinite linear; }
+        body { background: var(--black); color: #EDEDED; font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
+        .display { font-family: 'Barlow Condensed', sans-serif; }
 
-        .film-strip { background-image: linear-gradient(90deg, #fff 50%, transparent 50%); background-size: 24px 12px; height: 12px; width: 100%; opacity: 0.8; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
+        .hazard { background: repeating-linear-gradient(-45deg, var(--yellow) 0 16px, var(--black) 16px 32px); height: 10px; }
 
-        .glow-pink { color: var(--pink); text-shadow: 0 0 10px var(--pink), 0 0 20px rgba(255,0,127,0.4); }
-        .glow-blue { color: var(--blue); text-shadow: 0 0 10px var(--blue); }
-        .glow-orange { color: var(--orange); text-shadow: 0 0 10px var(--orange); }
-        .glow-green { color: var(--green); text-shadow: 0 0 10px var(--green); }
-        .glow-red { color: var(--red); text-shadow: 0 0 12px var(--red), 0 0 25px rgba(255,49,49,0.5); }
-        .glow-yellow { color: var(--yellow); text-shadow: 0 0 10px var(--yellow); }
+        .card { background: var(--panel); border: 1px solid var(--line); }
+        .card:hover { border-color: var(--yellow); }
 
-        .border-pink { border: 2px solid var(--pink); box-shadow: 0 0 15px rgba(255,0,127,0.3); }
-        .border-blue { border: 2px solid var(--blue); box-shadow: 0 0 15px rgba(0,242,255,0.3); }
-        .border-red { border: 3px solid var(--red); box-shadow: 0 0 25px rgba(255,49,49,0.4); }
-        .border-green { border: 2px solid var(--green); box-shadow: 0 0 15px rgba(57,255,20,0.3); }
-        .border-orange { border: 2px solid var(--orange); box-shadow: 0 0 15px rgba(255,172,28,0.3); }
+        .btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; transition: all .15s; cursor: pointer; display: block; text-align: center; text-decoration: none; }
+        .btn:active { transform: scale(.98); }
+        .btn-yellow { background: var(--yellow); color: var(--black); }
+        .btn-yellow:hover { filter: brightness(1.08); }
+        .btn-ghost { background: transparent; color: #EDEDED; border: 2px solid var(--line); }
+        .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
 
-        .module-card { background: rgba(5, 5, 10, 0.95); border-radius: 2px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .module-card:hover { transform: translateY(-4px) scale(1.01); background: #080810; }
+        .tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; font-size: 11px; color: #999; }
 
-        .crt-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04)); background-size: 100% 3px, 3px 100%; pointer-events: none; z-index: 9999; opacity: 0.3; }
+        .tech-input { background: #0E0E0E; border: 1px solid var(--line); color: #fff; padding: 14px; font-weight: 700; width: 100%; outline: none; text-transform: uppercase; }
+        .tech-input:focus { border-color: var(--yellow); }
+        .tech-input::placeholder { color: #555; }
 
+        .price-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding: 12px 8px; font-weight: 600; font-size: .85rem; }
         .price-list-container::-webkit-scrollbar { width: 4px; }
-        .price-list-container::-webkit-scrollbar-thumb { background: var(--pink); }
-
-        .tech-input { background: #000; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; font-weight: 700; width: 100%; outline: none; }
-        .tech-input:focus { border-color: var(--blue); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
-
-        .btn-pro { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 0.1em; transition: all 0.2s; text-transform: uppercase; cursor: pointer; }
-        .btn-pro:active { transform: scale(0.98); }
-
-        .price-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 10px; font-weight: 700; font-size: 0.85rem; }
-
-        .system-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; backdrop-filter: blur(20px); align-items: center; justify-content: center; }
+        .price-list-container::-webkit-scrollbar-thumb { background: var(--yellow); }
     </style>
 </head>
-<body class="p-4 md:p-8">
-    <div class="crt-overlay"></div>
+<body>
 
-    <!-- PAYMENT MODAL -->
-    <div id="pay-modal" class="system-modal p-4">
-        <div class="max-w-md w-full border-2 border-[#00F2FF] bg-black p-8 relative shadow-[0_0_100px_rgba(0,242,255,0.2)]">
-            <button onclick="closePay()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
-            <div class="text-center mb-10">
-                <i data-lucide="zap" class="glow-blue mx-auto mb-4" size="48"></i>
-                <h3 class="header-font font-black text-2xl glow-blue italic uppercase">Secure Terminal</h3>
-                <p id="pay-service" class="text-[10px] font-black tracking-[0.4em] text-white/40 mt-2">AI DISPATCH AUTH</p>
-                <p id="pay-amt" class="text-6xl font-black mt-6 glow-green">$60</p>
-            </div>
-            <div class="space-y-4">
-                <a id="cashapp-btn" href="#" target="_blank" class="flex items-center justify-between border-2 border-[#39FF14] p-6 hover:bg-[#39FF14]/10 transition-all">
-                    <span class="header-font glow-green">CASH APP</span><i data-lucide="dollar-sign" class="glow-green"></i>
-                </a>
-                <a id="paypal-btn" href="#" target="_blank" class="flex items-center justify-between border-2 border-[#00F2FF] p-6 hover:bg-[#00F2FF]/10 transition-all">
-                    <span class="header-font glow-blue">PAYPAL PRO</span><i data-lucide="credit-card" class="glow-blue"></i>
-                </a>
+    <!-- STICKY CALL BAR -->
+    <div class="sticky top-0 z-50 bg-black/95 border-b border-[#2C2C2C]">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+            <span class="display font-extrabold text-xl tracking-wide text-[#FFD400]">TIREDASH <span class="text-white text-sm font-semibold">NYC</span></span>
+            <div class="flex gap-2">
+                <a href="sms:5164615856" class="btn btn-ghost text-sm px-4 py-2">TEXT US</a>
+                <a href="tel:5164615856" class="btn btn-yellow text-sm px-4 py-2">CALL 516-461-5856</a>
             </div>
         </div>
     </div>
 
-    <!-- SIDEWALL DECODER MODAL -->
-    <div id="guide-modal" class="system-modal p-4">
-        <div class="max-w-xl w-full border-2 border-[#BC13FE] bg-black p-8 relative shadow-[0_0_80px_rgba(188,19,254,0.2)]">
-            <button onclick="closeGuide()" class="absolute top-4 right-4 text-white/30 hover:text-white"><i data-lucide="x"></i></button>
-            <div class="text-center mb-8">
-                <h3 class="header-font font-black text-2xl glow-pink uppercase">Sidewall Scan</h3>
-                <p class="text-[10px] font-black text-white/40 tracking-widest mt-2 uppercase">Match numbers for automated fitment</p>
+    <div class="hazard"></div>
+
+    <!-- HERO -->
+    <header class="max-w-6xl mx-auto px-4 pt-14 pb-10 text-center">
+        <p class="tag mb-4">SAME-DAY TIRE DELIVERY • 5 BOROUGHS + LONG ISLAND</p>
+        <h1 class="display font-extrabold italic uppercase leading-[0.85] text-6xl md:text-8xl">
+            TIRES IN <span class="text-[#FFD400]">HOURS.</span><br>NOT DAYS.
+        </h1>
+        <p class="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
+            Flat tire? Blowout? Need new rubber today? We hand-deliver new tires to your door, your job, the roadside, or any install shop — usually within hours. Any size, budget to premium.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <a href="sms:5164615856?&body=I%20need%20tires%20today.%20My%20tire%20size%20or%20car%20is%3A%20" class="btn btn-yellow text-lg px-10 py-4">TEXT YOUR TIRE SIZE → GET A PRICE IN MINUTES</a>
+            <a href="tel:5164615856" class="btn btn-ghost text-lg px-10 py-4">CALL NOW</a>
+        </div>
+        <p class="tag mt-8">FROM THE FAMILY BEHIND FATSO TIRE — 30 YEARS IN NEW YORK TIRES</p>
+    </header>
+
+    <div class="hazard"></div>
+
+    <!-- SERVICES -->
+    <section class="max-w-6xl mx-auto px-4 py-14">
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- RUSH -->
+            <div class="card p-8 relative">
+                <div class="absolute top-0 right-0 bg-[#FFD400] text-black display font-extrabold text-xs px-3 py-1 uppercase">Fastest</div>
+                <i data-lucide="zap" class="text-[#FFD400] mb-4" size="36"></i>
+                <h2 class="display font-extrabold uppercase text-3xl">DASH RUSH</h2>
+                <p class="tag mt-1 mb-4">DELIVERED IN ABOUT 90 MINUTES</p>
+                <p class="text-white/70 text-sm mb-6">Stranded or can't wait? We pull your size from our supply network and race it to you. Roadside, driveway, or shop.</p>
+                <p class="display font-extrabold text-5xl text-[#FFD400] mb-6">$99 <span class="text-base text-white/50 font-semibold">delivery + tire price</span></p>
+                <a href="sms:5164615856?&body=RUSH%20ORDER%20—%20I%20need%20a%20tire%20ASAP.%20Size%2Fcar%3A%20%20Location%3A%20" class="btn btn-yellow py-4 w-full">TEXT RUSH ORDER</a>
             </div>
-            <div class="border-2 border-white/5 p-8 rounded text-center mb-6">
-                <p class="text-4xl font-black tracking-widest mb-4">
-                    <span class="glow-pink">295</span> / <span class="glow-orange">75</span> R <span class="glow-green">22.5</span>
+
+            <!-- SAME DAY -->
+            <div class="card p-8">
+                <i data-lucide="package" class="text-[#FFD400] mb-4" size="36"></i>
+                <h2 class="display font-extrabold uppercase text-3xl">DASH SAME-DAY</h2>
+                <p class="tag mt-1 mb-4">DELIVERED IN 3–6 HOURS</p>
+                <p class="text-white/70 text-sm mb-6">Order by early afternoon, get your tires today. Home, office, or delivered straight to the install shop of your choice.</p>
+                <p class="display font-extrabold text-5xl text-[#FFD400] mb-6">$59 <span class="text-base text-white/50 font-semibold">delivery + tire price</span></p>
+                <a href="sms:5164615856?&body=SAME-DAY%20ORDER%20—%20Tire%20size%2Fcar%3A%20%20Deliver%20to%3A%20" class="btn btn-yellow py-4 w-full">TEXT SAME-DAY ORDER</a>
+            </div>
+
+            <!-- BUTLER -->
+            <div class="card p-8">
+                <i data-lucide="key" class="text-[#FFD400] mb-4" size="36"></i>
+                <h2 class="display font-extrabold uppercase text-3xl">TIRE BUTLER</h2>
+                <p class="tag mt-1 mb-4">WHITE-GLOVE PICK-UP & RETURN</p>
+                <p class="text-white/70 text-sm mb-6">We pick up your wheels or vehicle, handle the install, balancing or seasonal swap with our partner shops, and bring it back. You never leave the couch.</p>
+                <p class="display font-extrabold text-5xl text-[#FFD400] mb-6">$79+ <span class="text-base text-white/50 font-semibold">per service</span></p>
+                <a href="sms:5164615856?&body=TIRE%20BUTLER%20—%20I%27d%20like%20pick-up%2Fdrop-off%20service.%20Vehicle%3A%20%20Neighborhood%3A%20" class="btn btn-yellow py-4 w-full">BOOK THE BUTLER</a>
+            </div>
+        </div>
+        <p class="text-center text-white/40 text-sm mt-6">Pay on delivery — cash, Cash App, Zelle, or card. No prepayment needed.</p>
+    </section>
+
+    <div class="hazard"></div>
+
+    <!-- QUOTE TOOL + PRICE BOARD -->
+    <section class="max-w-6xl mx-auto px-4 py-14 grid lg:grid-cols-2 gap-8">
+
+        <!-- INSTANT QUOTE -->
+        <div class="card p-8">
+            <i data-lucide="calculator" class="text-[#FFD400] mb-4" size="36"></i>
+            <h2 class="display font-extrabold uppercase text-3xl mb-2">INSTANT PRICE CHECK</h2>
+            <p class="text-white/60 text-sm mb-6">Type your tire size — it's printed on the sidewall, like <b class="text-[#FFD400]">225/65R17</b>. Don't know it? Just text us your car's year, make and model instead.</p>
+            <input type="text" id="size-input" placeholder="ENTER SIZE — e.g. 225/65R17" class="tech-input text-lg mb-4">
+            <button onclick="quoteSize()" class="btn btn-yellow py-4 w-full text-lg">GET MY PRICE</button>
+            <div id="quote-result" class="hidden mt-6 border border-[#FFD400] p-6 text-center">
+                <p class="tag">STARTING AT</p>
+                <p class="display font-extrabold text-5xl text-[#FFD400] my-2" id="quote-price">$—</p>
+                <p class="text-white/50 text-xs mb-4" id="quote-note">per tire + delivery. Final price confirmed by text in minutes.</p>
+                <a id="quote-sms" href="#" class="btn btn-yellow py-3 w-full">TEXT US THIS ORDER →</a>
+            </div>
+            <div class="mt-6 border-t border-[#2C2C2C] pt-5">
+                <p class="tag mb-3">HOW TO READ YOUR SIDEWALL</p>
+                <p class="display font-extrabold text-3xl tracking-widest text-center">
+                    <span class="text-[#FFD400]">225</span> / <span class="text-white">65</span> R <span class="text-[#FFD400]">17</span>
                 </p>
-                <div class="grid grid-cols-3 gap-2 text-[10px] font-black uppercase text-white/60">
-                    <div>Width</div><div>Height</div><div>Rim Size</div>
-                </div>
-            </div>
-            <button onclick="closeGuide()" class="w-full bg-[#BC13FE] text-white py-5 btn-pro">SYNC TERMINAL</button>
-        </div>
-    </div>
-
-    <!-- TOP SYSTEM BAR -->
-    <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] mb-6 px-2 max-w-[1700px] mx-auto neon-flicker">
-        <div class="text-[#FFF01F] flex items-center">
-            <i data-lucide="cpu" size="14" class="mr-2"></i>
-            42ND ST TERMINAL // TIREDASHNYC.COM // NYC HUB
-        </div>
-        <div class="flex items-center space-x-6">
-            <span class="glow-red animate-pulse">● NEURAL_LINK: ONLINE</span>
-            <a href="tel:5164615856" class="glow-blue flex items-center bg-white/5 border border-[#00F2FF]/30 px-4 py-2 rounded">
-                <i data-lucide="phone-call" size="12" class="mr-2"></i> 516.461.5856
-            </a>
-        </div>
-    </div>
-
-    <!-- MAIN INTERFACE -->
-    <div class="max-w-[1700px] mx-auto">
-        <div class="film-strip mb-8"></div>
-        <header class="text-center mb-8 relative">
-            <h1 class="text-7xl md:text-[11rem] font-black italic tracking-tighter glow-pink header-font leading-[0.75] uppercase neon-flicker mb-6">TIREDASH</h1>
-            <p class="text-[14px] font-black tracking-[0.7em] uppercase glow-blue">ROAD-LOGISTICS AUTOMATION • NYC PROPERTY</p>
-        </header>
-        <div class="film-strip mb-12"></div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
-            
-            <!-- MASTER BOARD -->
-            <div class="lg:col-span-3">
-                <div class="flex justify-between items-center mb-6 px-2">
-                    <h2 class="glow-pink font-black text-2xl uppercase tracking-tighter">AI BOARD</h2>
-                    <span class="text-[10px] font-black bg-pink-600 text-black px-4 py-1 neon-flicker uppercase">Synced</span>
-                </div>
-                <div class="module-card border-pink p-6">
-                    <div class="flex justify-between text-[11px] font-black text-white/30 uppercase mb-4 px-2 border-b border-white/10 pb-3">
-                        <span>SPEC / SIZE</span><span>NET $</span>
-                    </div>
-                    <div id="master-board" class="price-list-container h-[850px] overflow-y-auto px-1 pr-4"></div>
-                </div>
-            </div>
-
-            <!-- LOGISTICS -->
-            <div class="lg:col-span-3 space-y-8">
-                <h2 class="glow-blue font-black text-2xl uppercase tracking-tighter mb-4 px-2">AI LOGISTICS</h2>
-                <div class="module-card border-blue p-8 bg-[#00F2FF]/5 relative">
-                    <button onclick="openGuide()" class="absolute top-4 right-4 glow-blue opacity-50 hover:opacity-100 flex items-center space-x-1 uppercase text-[10px] font-black tracking-tighter">Help <i data-lucide="help-circle" size="14"></i></button>
-                    <i data-lucide="scan-text" class="glow-blue mb-4" size="32"></i>
-                    <p class="header-font font-black text-lg mb-6">SMART ANALYZER</p>
-                    <div class="space-y-4 mb-6">
-                        <input type="text" placeholder="VEHICLE YEAR" class="tech-input uppercase">
-                        <input type="text" placeholder="VEHICLE MAKE" class="tech-input uppercase">
-                        <input type="text" placeholder="VEHICLE MODEL" class="tech-input uppercase">
-                    </div>
-                    <button class="w-full bg-[#00F2FF] text-black py-5 btn-pro text-sm hover:brightness-125">RUN NEURAL SCAN</button>
-                </div>
-                <div class="module-card border-orange p-8 bg-[#FFAC1C]/5">
-                    <i data-lucide="key" class="glow-orange mb-4" size="32"></i>
-                    <p class="header-font font-black text-lg mb-2">ELITE VALET</p>
-                    <p class="text-[11px] text-white/40 uppercase font-black mb-8 leading-relaxed">Pick-Up / Drop-Off Service for professional same-day wheel balancing & repair.</p>
-                    <button onclick="initPay(45, 'ELITE VALET CONCIERGE')" class="w-full bg-[#FFAC1C] text-black py-5 btn-pro text-sm">INITIATE VALET</button>
-                </div>
-                <div class="p-8 bg-black border border-white/10 rounded">
-                    <div class="space-y-4 font-black text-sm uppercase">
-                        <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-white/40">MON-FRI</span><span class="glow-green">08:00 - 17:00</span></div>
-                        <div class="flex justify-between"><span class="text-white/40">SATURDAY</span><span class="glow-green">08:00 - 14:00</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- POWER NODE -->
-            <div class="lg:col-span-3 space-y-8">
-                <h2 class="glow-red font-black text-2xl uppercase tracking-tighter mb-4 px-2">POWER NODE</h2>
-                <div class="module-card border-red p-8 bg-red-950/10 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-[#FF3131] text-black font-black text-[10px] px-3 py-1 uppercase tracking-tighter">URGENT</div>
-                    <div class="flex items-center space-x-5 mb-8">
-                        <i data-lucide="flame" class="glow-red" size="40"></i>
-                        <div>
-                            <p class="text-[11px] font-black italic uppercase glow-red">AI URGENCY PROTOCOL</p>
-                            <p class="font-bold text-lg glow-red tracking-tighter uppercase italic">90 MINS DELIVERY</p>
-                            <p class="font-bold text-4xl glow-red mt-1">$60</p>
-                        </div>
-                    </div>
-                    <button onclick="initPay(60, 'URGENCY PROTOCOL DISPATCH')" class="w-full neon-red-bg text-white py-6 btn-pro text-lg">INITIATE DISPATCH</button>
-                </div>
-                <div class="module-card border-green p-8 bg-green-950/10">
-                    <div class="flex items-center space-x-5 mb-8">
-                        <i data-lucide="package" class="glow-green" size="40"></i>
-                        <div>
-                            <p class="text-[11px] font-black italic uppercase glow-green">SMART DELIVERY</p>
-                            <p class="font-bold text-lg glow-green tracking-tighter uppercase italic">3-6HRS SAME DAY</p>
-                            <p class="font-bold text-4xl glow-green mt-1">$15</p>
-                        </div>
-                    </div>
-                    <button onclick="initPay(15, 'SMART DELIVERY SERVICE')" class="w-full bg-[#39FF14] text-black py-6 btn-pro text-lg">AUTO-SCHEDULE</button>
-                </div>
-                <div class="module-card border-2 border-[#BC13FE]/40 p-8 text-center bg-[#BC13FE]/5">
-                    <i data-lucide="truck" class="glow-purple mb-4 mx-auto" size="24"></i>
-                    <p class="text-[10px] text-white font-black uppercase tracking-widest">Neural Mobile Deployment</p>
-                    <button class="w-full mt-4 bg-[#BC13FE] text-white py-3 btn-pro text-xs">BOOK MOBILE VAN</button>
-                </div>
-            </div>
-
-            <!-- TERMINAL -->
-            <div class="lg:col-span-3 space-y-6 pt-10">
-                <div class="module-card border-2 border-[#FFF01F] p-8 bg-[#FFF01F]/5">
-                    <i data-lucide="bot" class="glow-yellow mb-6" size="40"></i>
-                    <p class="header-font font-black text-lg mb-6 glow-yellow uppercase italic">AI Quote Engine</p>
-                    <input type="text" placeholder="INPUT SIZE..." class="tech-input uppercase mb-6 py-6 text-lg border-yellow-500/30">
-                    <button class="w-full bg-[#FFF01F] text-black py-6 btn-pro text-sm">GET INSTANT PRICE</button>
-                    <a href="tel:5164615856" class="flex items-center justify-center w-full py-4 mt-6 bg-black border border-white/10 text-white font-black uppercase text-xs hover:border-yellow-400">
-                        <i data-lucide="message-square" size="16" class="mr-3 glow-yellow"></i> SMS: 516.461.5856
-                    </a>
-                </div>
-                <div class="module-card border border-white/10 p-6 bg-black/80 text-center">
-                    <a href="tel:5164615856" class="flex items-center justify-center space-x-4 neon-flicker">
-                        <i data-lucide="phone-call" class="text-white" size="24"></i>
-                        <p class="header-font font-black text-sm text-white italic uppercase tracking-[0.2em]">DIRECT: 516.461.5856</p>
-                    </a>
-                </div>
-                <div class="mt-8 p-6 border border-dashed border-white/20 bg-black/50 rounded">
-                    <p class="text-[10px] font-black text-white/20 uppercase mb-4 flex justify-between"><span>CORE_STATUS</span><span>SECURE_LINK</span></p>
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-[11px] font-black uppercase"><span class="text-white/40">Neural Load</span><span class="glow-green">Optimal</span></div>
-                        <div class="grid grid-cols-10 gap-1"><div class="h-1 bg-green-500 shadow-[0_0_8px_#39FF14]"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-green-500"></div><div class="h-1 bg-white/5"></div><div class="h-1 bg-white/5"></div></div>
-                    </div>
+                <div class="grid grid-cols-3 gap-2 text-[10px] font-bold uppercase text-white/50 text-center mt-2">
+                    <div>Width</div><div>Height</div><div>Rim size</div>
                 </div>
             </div>
         </div>
 
-        <footer class="mt-24 text-center text-[12px] font-black opacity-40 uppercase tracking-[1em] pb-10 border-t border-white/5 pt-12 neon-flicker">
-            NYC TECHNOLOGY CORE • TIREDASH AUTH: 516.461.5856
-        </footer>
-    </div>
+        <!-- PRICE BOARD -->
+        <div class="card p-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="display font-extrabold uppercase text-3xl">PRICE BOARD</h2>
+                <span class="tag">150+ SIZES IN NETWORK</span>
+            </div>
+            <div class="flex justify-between text-[11px] font-bold text-white/40 uppercase mb-2 px-2 border-b border-[#2C2C2C] pb-2">
+                <span>Size</span><span>From (per tire)</span>
+            </div>
+            <div id="master-board" class="price-list-container h-[520px] overflow-y-auto pr-3"></div>
+            <p class="text-white/40 text-xs mt-4">Prices are per-tire starting points for quality budget-tier rubber. Mid-range and premium brands quoted by text. Commercial & EV sizes in orange/blue.</p>
+        </div>
+    </section>
+
+    <div class="hazard"></div>
+
+    <!-- TRUST + COVERAGE + HOURS -->
+    <section class="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-6 text-center">
+        <div class="card p-8">
+            <i data-lucide="shield-check" class="text-[#FFD400] mx-auto mb-3" size="32"></i>
+            <h3 class="display font-extrabold uppercase text-xl mb-2">30 YEARS OF NY RUBBER</h3>
+            <p class="text-white/60 text-sm">TireDash comes from the family behind Fatso Tire. Three decades supplying shops and drivers across the city. You ring, we bring.</p>
+        </div>
+        <div class="card p-8">
+            <i data-lucide="map" class="text-[#FFD400] mx-auto mb-3" size="32"></i>
+            <h3 class="display font-extrabold uppercase text-xl mb-2">WHERE WE ROLL</h3>
+            <p class="text-white/60 text-sm">Manhattan • Brooklyn • Queens • Bronx • Staten Island • Nassau • Suffolk. If you're in the five boroughs or on Long Island, we've got you.</p>
+        </div>
+        <div class="card p-8">
+            <i data-lucide="clock" class="text-[#FFD400] mx-auto mb-3" size="32"></i>
+            <h3 class="display font-extrabold uppercase text-xl mb-2">HOURS</h3>
+            <p class="text-white/60 text-sm">Mon–Fri 8am–5pm<br>Saturday 8am–2pm<br><span class="text-[#FFD400] font-bold">After-hours emergency? Text us — if we can roll, we roll.</span></p>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="bg-[#FFD400] text-black py-14 text-center px-4">
+        <h2 class="display font-extrabold italic uppercase text-5xl md:text-6xl leading-[0.9]">WHY WAIT 4 DAYS?<br>GET THEM IN 4 HOURS.</h2>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <a href="tel:5164615856" class="btn bg-black text-[#FFD400] text-lg px-10 py-4">CALL 516-461-5856</a>
+            <a href="sms:5164615856?&body=I%20need%20tires%20today.%20Size%2Fcar%3A%20" class="btn border-2 border-black text-black text-lg px-10 py-4">TEXT YOUR SIZE</a>
+        </div>
+    </section>
+
+    <footer class="text-center text-xs text-white/30 uppercase tracking-[0.4em] py-10 display font-semibold">
+        TIREDASH NYC • HOURS, NOT DAYS • 516-461-5856
+    </footer>
 
     <script>
         lucide.createIcons();
-        function initPay(amt, svc) { document.getElementById('pay-amt').innerText = '$' + amt; document.getElementById('pay-service').innerText = svc; document.getElementById('pay-modal').style.display = 'flex'; }
-        function closePay() { document.getElementById('pay-modal').style.display = 'none'; }
-        function openGuide() { document.getElementById('guide-modal').style.display = 'flex'; }
-        function closeGuide() { document.getElementById('guide-modal').style.display = 'none'; }
 
-        // MASTER 150+ TIRE DATABASE
+        // ===== MASTER TIRE PRICE DATA (edit prices here) =====
         const inventory = [
-            /* PARTNER REQUESTED SPECIALS ($90 & $169) */
-            { s: "235/75R15", p: "90", t: "pas" }, { s: "225/75R15", p: "90", t: "pas" },
-            { s: "225/70R16", p: "90", t: "pas" }, { s: "275/50R22", p: "169", t: "pas" },
-            /* PRIMARY COMMERCIAL */
-            { s: "295/75R22.5", p: "385", t: "com" }, { s: "11R22.5", p: "365", t: "com" },
-            { s: "225/70R19.5", p: "245", t: "com" }, { s: "245/70R19.5", p: "265", t: "com" },
-            { s: "255/70R22.5", p: "310", t: "com" }, { s: "11R24.5", p: "410", t: "com" },
-            { s: "285/75R24.5", p: "425", t: "com" },
+            /* PARTNER SPECIALS */
+            { s: "235/75R15", p: 90, t: "pas" }, { s: "225/75R15", p: 90, t: "pas" },
+            { s: "225/70R16", p: 90, t: "pas" }, { s: "275/50R22", p: 169, t: "pas" },
+            /* COMMERCIAL */
+            { s: "295/75R22.5", p: 385, t: "com" }, { s: "11R22.5", p: 365, t: "com" },
+            { s: "225/70R19.5", p: 245, t: "com" }, { s: "245/70R19.5", p: 265, t: "com" },
+            { s: "255/70R22.5", p: 310, t: "com" }, { s: "11R24.5", p: 410, t: "com" },
+            { s: "285/75R24.5", p: 425, t: "com" },
             /* EV & HIGH END */
-            { s: "235/45R18 (EV)", p: "135", t: "ev" }, { s: "255/45R19 (EV)", p: "165", t: "ev" },
-            { s: "255/40R20 (EV)", p: "185", t: "ev" }, { s: "275/35R21", p: "210", t: "ev" },
-            { s: "285/30R22", p: "245", t: "ev" },
+            { s: "235/45R18 (EV)", p: 135, t: "ev" }, { s: "255/45R19 (EV)", p: 165, t: "ev" },
+            { s: "255/40R20 (EV)", p: 185, t: "ev" }, { s: "275/35R21", p: 210, t: "ev" },
+            { s: "285/30R22", p: 245, t: "ev" },
             /* NYC TOP SELLERS */
-            { s: "225/65R17", p: "65", t: "pas" }, { s: "205/55R16", p: "53", t: "pas" },
-            { s: "195/65R15", p: "49", t: "pas" }, { s: "215/55R17", p: "60", t: "pas" },
-            { s: "225/60R18", p: "72", t: "pas" }, { s: "235/60R18", p: "78", t: "pas" },
-            { s: "245/45R18", p: "85", t: "pas" }, { s: "265/70R17", p: "110", t: "pas" }
+            { s: "225/65R17", p: 65, t: "pas" }, { s: "205/55R16", p: 53, t: "pas" },
+            { s: "195/65R15", p: 49, t: "pas" }, { s: "215/55R17", p: 60, t: "pas" },
+            { s: "225/60R18", p: 72, t: "pas" }, { s: "235/60R18", p: 78, t: "pas" },
+            { s: "245/45R18", p: 85, t: "pas" }, { s: "265/70R17", p: 110, t: "pas" }
         ];
 
-        const board = document.getElementById('master-board');
+        const extraSizes = ["175/65R14","185/60R14","185/65R14","185/70R14","195/60R14","205/70R14","185/60R15","185/65R15","195/50R15","195/55R15","195/60R15","195/65R15","205/60R15","205/65R15","205/70R15","215/65R15","215/70R15","215/75R15","225/70R15","235/70R15","185/55R16","195/45R16","195/50R16","195/55R16","195/60R16","205/45R16","205/50R16","205/55R16","205/60R16","205/65R16","215/55R16","215/60R16","215/65R16","215/70R16","225/50R16","225/55R16","225/60R16","225/65R16","235/60R16","235/65R16","235/70R16","235/85R16","245/70R16","245/75R16","255/65R16","255/70R16","265/70R16","265/75R16","205/40R17","205/45R17","205/50R17","215/45R17","215/50R17","215/55R17","215/60R17","215/65R17","225/45R17","225/50R17","225/55R17","225/60R17","225/65R17","235/40R17","235/45R17","235/50R17","235/55R17","235/60R17","235/65R17","245/40R17","245/45R17","245/65R17","245/70R17","245/75R17","255/65R17","265/60R17","265/65R17","285/70R17","215/40R18","215/45R18","225/40R18","225/45R18","225/50R18","225/55R18","225/60R18","235/40R18","235/45R18","235/50R18","235/55R18","235/60R18","235/65R18","245/35R18","245/40R18","245/45R18","245/50R18","245/60R18","255/35R18","255/40R18","255/45R18","255/55R18","255/60R18","255/65R18","255/70R18","265/35R18","265/60R18","265/65R18","265/70R18","275/65R18","275/70R18","285/60R18","225/40R19","225/45R19","225/55R19","235/35R19","235/40R19","235/45R19","235/50R19","235/55R19","245/35R19","245/40R19","245/45R19","245/50R19","255/35R19","255/40R19","255/45R19","255/50R19","255/55R19","265/30R19","265/35R19","265/40R19","265/50R19","275/30R19","275/35R19","275/40R19","275/45R19","285/30R19","285/35R19","285/40R19","285/45R19","235/35R20","235/45R20","235/55R20","245/35R20","245/40R20","245/45R20","245/50R20","255/35R20","255/40R20","255/45R20","255/50R20","255/55R20","265/35R20","265/40R20","265/45R20","265/50R20","275/30R20","275/35R20","275/40R20","275/45R20","275/55R20","275/60R20","285/30R20","285/35R20","285/40R20","285/45R20","285/50R20","295/30R20","295/35R20","295/40R20","305/30R20","245/35R21","245/40R21","255/30R21","255/35R21","265/30R21","265/35R21","265/40R21","265/45R21","275/30R21","275/35R21","275/40R21","285/30R21","285/35R21","295/25R21","295/30R21","295/35R21","305/30R21","265/30R22","265/35R22","265/40R22","275/35R22","275/40R22","275/45R22","285/30R22","285/35R22","285/40R22","285/45R22","295/25R22","295/30R22","305/40R22","305/45R22","325/35R22"];
+
+        // Build the full price map
+        const priceMap = {};
+        inventory.forEach(i => priceMap[i.s.replace(/\s|\(EV\)/g, "").toUpperCase()] = { p: i.p, t: i.t });
+        extraSizes.forEach((s, idx) => {
+            const key = s.toUpperCase();
+            if (priceMap[key]) return;
+            const rim = parseInt(s.split("R")[1]);
+            const base = rim < 16 ? 45 : rim < 18 ? 65 : rim < 20 ? 95 : 145;
+            priceMap[key] = { p: base + (idx % 12), t: "pas" };
+        });
+
+        // Render price board
+        const board = document.getElementById("master-board");
+        const colorFor = t => t === "com" ? "#FFAC1C" : (t === "ev" ? "#4FC3F7" : "#FFD400");
         inventory.forEach(i => {
-            const div = document.createElement('div'); div.className = 'price-item';
-            const color = i.t === 'com' ? 'glow-orange' : (i.t === 'ev' ? 'glow-blue' : 'glow-green');
-            div.innerHTML = `<span class="uppercase tracking-wider">${i.s}</span><span class="${color}">$${i.p}</span>`;
+            const div = document.createElement("div"); div.className = "price-item";
+            div.innerHTML = `<span class="uppercase tracking-wider">${i.s}</span><span style="color:${colorFor(i.t)}">$${i.p}</span>`;
+            board.appendChild(div);
+        });
+        extraSizes.forEach(s => {
+            const key = s.toUpperCase();
+            if (inventory.some(item => item.s.toUpperCase() === key)) return;
+            const div = document.createElement("div"); div.className = "price-item";
+            div.innerHTML = `<span>${s}</span><span style="color:#FFD400">$${priceMap[key].p}</span>`;
             board.appendChild(div);
         });
 
-        const list = ["175/65R14", "185/60R14", "185/65R14", "185/70R14", "195/60R14", "205/70R14", "185/60R15", "185/65R15", "195/50R15", "195/55R15", "195/60R15", "195/65R15", "205/60R15", "205/65R15", "205/70R15", "215/65R15", "215/70R15", "215/75R15", "225/70R15", "235/70R15", "185/55R16", "195/45R16", "195/50R16", "195/55R16", "195/60R16", "205/45R16", "205/50R16", "205/55R16", "205/60R16", "205/65R16", "215/55R16", "215/60R16", "215/65R16", "215/70R16", "225/50R16", "225/55R16", "225/60R16", "225/65R16", "235/60R16", "235/65R16", "235/70R16", "235/85R16", "245/70R16", "245/75R16", "255/65R16", "255/70R16", "265/70R16", "265/75R16", "205/40R17", "205/45R17", "205/50R17", "215/45R17", "215/50R17", "215/55R17", "215/60R17", "215/65R17", "225/45R17", "225/50R17", "225/55R17", "225/60R17", "225/65R17", "235/40R17", "235/45R17", "235/50R17", "235/55R17", "235/60R17", "235/65R17", "245/40R17", "245/45R17", "245/65R17", "245/70R17", "245/75R17", "255/65R17", "265/60R17", "265/65R17", "285/70R17", "215/40R18", "215/45R18", "225/40R18", "225/45R18", "225/50R18", "225/55R18", "225/60R18", "235/40R18", "235/45R18", "235/50R18", "235/55R18", "235/60R18", "235/65R18", "245/35R18", "245/40R18", "245/45R18", "245/50R18", "245/60R18", "255/35R18", "255/40R18", "255/45R18", "255/55R18", "255/60R18", "255/65R18", "255/70R18", "265/35R18", "265/60R18", "265/65R18", "265/70R18", "275/65R18", "275/70R18", "285/60R18", "225/40R19", "225/45R19", "225/55R19", "235/35R19", "235/40R19", "235/45R19", "235/50R19", "235/55R19", "245/35R19", "245/40R19", "245/45R19", "245/50R19", "255/35R19", "255/40R19", "255/45R19", "255/50R19", "255/55R19", "265/30R19", "265/35R19", "265/40R19", "265/50R19", "275/30R19", "275/35R19", "275/40R19", "275/45R19", "285/30R19", "285/35R19", "285/40R19", "285/45R19", "235/35R20", "235/45R20", "235/55R20", "245/35R20", "245/40R20", "245/45R20", "245/50R20", "255/35R20", "255/40R20", "255/45R20", "255/50R20", "255/55R20", "265/35R20", "265/40R20", "265/45R20", "265/50R20", "275/30R20", "275/35R20", "275/40R20", "275/45R20", "275/55R20", "275/60R20", "285/30R20", "285/35R20", "285/40R20", "285/45R20", "285/50R20", "295/30R20", "295/35R20", "295/40R20", "305/30R20", "245/35R21", "245/40R21", "255/30R21", "255/35R21", "265/30R21", "265/35R21", "265/40R21", "265/45R21", "275/30R21", "275/35R21", "275/40R21", "285/30R21", "285/35R21", "295/25R21", "295/30R21", "295/35R21", "305/30R21", "265/30R22", "265/35R22", "265/40R22", "275/35R22", "275/40R22", "275/45R22", "285/30R22", "285/35R22", "285/40R22", "285/45R22", "295/25R22", "295/30R22", "305/40R22", "305/45R22", "325/35R22"];
-        list.forEach((s, idx) => {
-            if (inventory.some(item => item.s === s)) return;
-            const div = document.createElement('div'); div.className = 'price-item';
-            const rim = parseInt(s.split('R')[1]);
-            const base = rim < 16 ? 45 : rim < 18 ? 65 : rim < 20 ? 95 : 145;
-            div.innerHTML = `<span>${s}</span><span class="glow-green">$${base + (idx % 12)}</span>`;
-            board.appendChild(div);
-        });
+        // Instant quote tool
+        function quoteSize() {
+            const raw = document.getElementById("size-input").value.trim().toUpperCase().replace(/\s/g, "");
+            const result = document.getElementById("quote-result");
+            const priceEl = document.getElementById("quote-price");
+            const noteEl = document.getElementById("quote-note");
+            const smsEl = document.getElementById("quote-sms");
+            if (!raw) return;
+            const hit = priceMap[raw];
+            if (hit) {
+                priceEl.innerText = "$" + hit.p;
+                noteEl.innerText = "per tire + delivery. Final price confirmed by text in minutes.";
+            } else {
+                priceEl.innerText = "TEXT US";
+                noteEl.innerText = "We carry this size — text it to us for a price in minutes.";
+            }
+            smsEl.href = "sms:5164615856?&body=" + encodeURIComponent("Price check — tire size " + raw + ". How fast can you deliver?");
+            result.classList.remove("hidden");
+            result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+        document.getElementById("size-input").addEventListener("keydown", e => { if (e.key === "Enter") quoteSize(); });
     </script>
 </body>
-</htm
-        
+</html>
